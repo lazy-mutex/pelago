@@ -1,18 +1,40 @@
 # pelago
 
-Render all **33** Mermaid & Pele diagram types to deterministic, self-contained SVG in [Typst](https://typst.app), from the command line, or as a zero-dependency Rust library. `pelago` is a Rust port of [Pele](https://pele.run) compiled to WebAssembly for Typst's plugin protocol.
+Render all **33** Mermaid & Pele diagram types to deterministic, self-contained SVG in [Typst](https://typst.app), from the command line, or as a zero-dependency Rust library. `pelago` is a pure Rust port of [Pele](https://pele.run/) ([`obsidianmd/pele`](https://github.com/obsidianmd/pele) by [`@kepano`](https://github.com/kepano)), compiled directly to WebAssembly for Typst's plugin protocol.
 
 - **Complete diagram coverage (33 types)** — `flowchart` / `graph`, `sequenceDiagram`, `classDiagram`, `stateDiagram` / `stateDiagram-v2`, `erDiagram`, `gantt`, `gitGraph`, `pie`, `mindmap`, `timeline`, `journey`, `quadrantChart`, `xychart-beta`, `sankey-beta`, `requirementDiagram`, `C4Context` (`c4`), `block-beta`, `packet-beta`, `kanban`, `architecture-beta`, `radar-beta`, `treemap-beta`, `venn-beta`, `ishikawa-beta`, `wardley-beta`, `treeView-beta`, `cynefin-beta`, `eventmodeling`, `usecase-beta`, `agentflow-beta`, `swimlane-beta`, `railroad-beta` (`ebnf` / `abnf` / `peg`), and `info`.
-- **Zero runtime dependencies** — pure Rust parsers, Sugiyama / hierarchical / force / radial layout engines, text metrics, URL/CSS sanitizer, and SVG renderers.
+- **Zero runtime dependencies & no JS engine** — pure Rust parsers, Sugiyama / hierarchical / force / radial layout engines, text metrics, URL/CSS sanitizer, and SVG renderers compiled straight to `wasm32-unknown-unknown`.
 - **Typst-native SVG output** — resolves Pele's CSS custom properties (`var(--...)`), `color-mix(in srgb, ...)`, generic font stacks, and `rx`/`ry` corner radii into plain SVG attributes compatible with `usvg`.
 - **Pele parity (`--raw`)** — pass `raw: true` (or `--raw` on the CLI) to emit Pele's un-resolved CSS custom property stylesheet verbatim.
 
+## Installation (Typst `@local` Package)
+
+`pelago.wasm` is prebuilt in the repository, so no Rust toolchain is needed to use the Typst package. Clone into your local Typst packages directory (or run `make install` from a checkout):
+
+```sh
+# Linux
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/pelago"
+git clone https://github.com/lazy-mutex/pelago.git \
+  "${XDG_DATA_HOME:-$HOME/.local/share}/typst/packages/local/pelago/0.1.0"
+
+# macOS
+mkdir -p "$HOME/Library/Application Support/typst/packages/local/pelago"
+git clone https://github.com/lazy-mutex/pelago.git \
+  "$HOME/Library/Application Support/typst/packages/local/pelago/0.1.0"
+```
+
+```powershell
+# Windows (PowerShell)
+New-Item -ItemType Directory -Force "$env:APPDATA\typst\packages\local\pelago"
+git clone https://github.com/lazy-mutex/pelago.git "$env:APPDATA\typst\packages\local\pelago\0.1.0"
+```
+
 ## Typst Usage
 
-Import `mermaid` from `lib.typ` (or from your local Typst package namespace):
+Import `mermaid` from `@local/pelago:0.1.0` (or directly from `"lib.typ"` inside a project directory):
 
 ```typst
-#import "lib.typ": mermaid
+#import "@local/pelago:0.1.0": mermaid
 
 #mermaid("
 flowchart TD
@@ -29,7 +51,7 @@ flowchart TD
 Render every ```` ```mermaid ```` block automatically with a `show` rule:
 
 ```typst
-#import "lib.typ": mermaid
+#import "@local/pelago:0.1.0": mermaid
 #show raw.where(lang: "mermaid"): mermaid
 
 ```mermaid
@@ -82,7 +104,7 @@ println!("{} ({}x{})", result.diagram, result.width, result.height);
 println!("{}", result.svg);
 ```
 
-## Building `pelago.wasm`
+## Building `pelago.wasm` from Source
 
 Requires the `wasm32-unknown-unknown` Rust target:
 
@@ -99,3 +121,11 @@ Run the full test suite (unit tests, 300+ Pele parity & security corpus tests, C
 ```sh
 cargo test
 ```
+
+## Acknowledgements & License
+
+`pelago` is a Rust port of **[Pele](https://pele.run/)** ([`obsidianmd/pele`](https://github.com/obsidianmd/pele)), created by [Steph Ango (`@kepano`)](https://github.com/kepano) and the Obsidian team. Credit for the diagram aesthetics, layout design, and CSS variable theming model goes to the original Pele project.
+
+Bringing Pele natively to Typst as a pure Rust/WebAssembly plugin was inspired by the [`r/typst` community discussion *"Pele by Kepano on Typst?"*](https://www.reddit.com/r/typst/comments/1x8vhg1/pele_by_kepano_on_typst/).
+
+Released under the [MIT License](LICENSE).

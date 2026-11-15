@@ -5,6 +5,7 @@ entrypoint = "lib.typ"
 authors = ["pelago contributors"]
 license = "MIT"
 description = "Render Mermaid diagrams to SVG in Typst using a Rust port of Pele."
+repository = "https://github.com/lazy-mutex/pelago"
 keywords = ["mermaid", "diagram", "flowchart", "svg", "pele"]
 categories = ["visualization"]
 compiler = "0.13.0"
