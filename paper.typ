@@ -3,6 +3,7 @@
 #set document(
   title: "pelago: Deterministic Mermaid & Pele Diagram Rendering in Typst",
   author: "pelago contributors",
+  date: none,
 )
 
 #set page(
