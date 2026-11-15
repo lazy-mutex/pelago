@@ -6,6 +6,7 @@ Render all **33** Mermaid & Pele diagram types to deterministic, self-contained 
 - **Zero runtime dependencies & no JS engine** — pure Rust parsers, Sugiyama / hierarchical / force / radial layout engines, text metrics, URL/CSS sanitizer, and SVG renderers compiled straight to `wasm32-unknown-unknown`.
 - **Typst-native SVG output** — resolves Pele's CSS custom properties (`var(--...)`), `color-mix(in srgb, ...)`, generic font stacks, and `rx`/`ry` corner radii into plain SVG attributes compatible with `usvg`.
 - **Pele parity (`--raw`)** — pass `raw: true` (or `--raw` on the CLI) to emit Pele's un-resolved CSS custom property stylesheet verbatim.
+- **[Showcase Paper (`paper.pdf`)](paper.pdf)** — two-column Typst showcase document ([source: `paper.typ`](paper.typ)) rendering 9 live diagrams and theme comparisons.
 
 ## Installation (Typst `@local` Package)
 

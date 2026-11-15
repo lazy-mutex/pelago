@@ -33,4 +33,4 @@ paper: wasm
 
 clean:
 	cargo clean
-	rm -f paper.pdf paper.png
+	rm -f paper.png
