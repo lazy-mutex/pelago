@@ -405,9 +405,9 @@ Unlike single-purpose flowchart packages, `pelago` ships specialized layout engi
 
 = Conclusion & Acknowledgements
 
-`pelago` brings the full breadth of Mermaid and Pele diagramming to Typst as a single self-contained WebAssembly module—requiring no Node.js toolchain, no headless browser, and no JavaScript runtime. It is equally usable as a Typst `@local` plugin, a standalone CLI (`pelago --dark diagram.mmd`), or an embeddable Rust crate (`pelago::render`).
+`pelago` brings the full breadth of Mermaid and Pele diagramming to Typst as a single self-contained WebAssembly module—requiring no Node.js toolchain, no headless browser, and no JavaScript runtime. It is usable as a Typst `@local` plugin, a standalone CLI (`pelago --dark`), or an embeddable Rust crate (`pelago::render`).
 
-We gratefully credit Steph Ango (`@kepano`) and `obsidianmd/pele` for the original Pele design, visual language, and test corpus, as well as the `r/typst` community for sparking this port.
+This Rust/WASM port was developed via AI-assisted *vibe coding* against Pele's reference implementation and validated with 300+ parity, sanitizer, and end-to-end `typst compile` tests. We gratefully credit Steph Ango (`@kepano`) and `obsidianmd/pele` for the original Pele design, visual language, and test corpus, as well as the `r/typst` community for sparking the idea.
 
 #v(2pt)
 #block(

@@ -127,6 +127,6 @@ cargo test
 
 `pelago` is a Rust port of **[Pele](https://pele.run/)** ([`obsidianmd/pele`](https://github.com/obsidianmd/pele)), created by [Steph Ango (`@kepano`)](https://github.com/kepano) and the Obsidian team. Credit for the diagram aesthetics, layout design, and CSS variable theming model goes to the original Pele project.
 
-Bringing Pele natively to Typst as a pure Rust/WebAssembly plugin was inspired by the [`r/typst` community discussion *"Pele by Kepano on Typst?"*](https://www.reddit.com/r/typst/comments/1x8vhg1/pele_by_kepano_on_typst/).
+Bringing Pele natively to Typst as a pure Rust/WebAssembly plugin was inspired by the [`r/typst` community discussion *"Pele by Kepano on Typst?"*](https://www.reddit.com/r/typst/comments/1x8vhg1/pele_by_kepano_on_typst/). This port was built with AI-assisted *vibe coding*, guided by Pele's upstream architecture and validated against 300+ parity, edge-case, and security corpus tests alongside end-to-end `typst compile` integration tests.
 
 Released under the [MIT License](LICENSE).
