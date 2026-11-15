@@ -1,0 +1,21 @@
+[package]
+name = "pelago"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["pelago contributors"]
+license = "MIT"
+description = "Render Mermaid diagrams to SVG in Typst using a Rust port of Pele."
+keywords = ["mermaid", "diagram", "flowchart", "svg", "pele"]
+categories = ["visualization"]
+compiler = "0.13.0"
+exclude = [
+  "/Cargo.toml",
+  "/Cargo.lock",
+  "/Makefile",
+  "/src",
+  "/tests",
+  "/target",
+  "/paper.typ",
+  "/paper.pdf",
+  "/paper.png",
+]

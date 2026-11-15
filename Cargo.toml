@@ -1,0 +1,20 @@
+[package]
+name = "pelago"
+version = "0.1.0"
+edition = "2021"
+description = "Renders Mermaid diagrams to SVG. A Rust port of Pele, usable as a Typst plugin."
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "pelago"
+path = "src/bin/pelago.rs"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
